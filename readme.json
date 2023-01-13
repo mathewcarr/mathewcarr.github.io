@@ -1,0 +1,14 @@
+{
+  "slack":
+  {
+    "directmessage": "Please send context, I'd rather not have to guess.",
+    "threads": True,
+    "private_channels": True,
+    "group_dms": False,
+  },
+  "meetings":
+  {
+    "agendas": True,
+    "timing": "Please respect scheduled working hours.",
+  },
+}
