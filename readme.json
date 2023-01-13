@@ -2,13 +2,13 @@
   "slack":
   {
     "directmessage": "Please send context, I'd rather not have to guess.",
-    "threads": True,
-    "private_channels": True,
-    "group_dms": False,
+    "threads": true,
+    "private_channels": true,
+    "group_dms": false,
   },
   "meetings":
   {
-    "agendas": True,
+    "agendas": true,
     "timing": "Please respect scheduled working hours.",
   },
 }
