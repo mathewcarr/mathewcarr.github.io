@@ -1,7 +1,7 @@
 {
   "slack":
   {
-    "directmessage": "Please send context, I'd rather not have to guess.",
+    "direct_message": "Please send context, I'd rather not have to guess.",
     "threads": true,
     "private_channels": true,
     "group_dms": false,
