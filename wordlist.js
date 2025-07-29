@@ -1,4 +1,4 @@
-const wordList = [
+const wordlist = [
   'abacus',
   'abdomen',
   'abdominal',
@@ -7776,3 +7776,12 @@ const wordList = [
   'zoology',
   'zoom'
 ];
+
+function generatePassphrase(numWords = 4) {
+  let passphrase = [];
+  for (let i = 0; i < numWords; i++) {
+    const index = Math.floor(Math.random() * wordlist.length);
+    passphrase.push(wordlist[index]);
+  }
+  return passphrase.join(' ');
+}
