@@ -1,7 +1,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pink Terminal</title>
+  <title>Pink Terminal Words</title>
   <style>
     body {
       margin: 0;
@@ -88,8 +88,8 @@
   <div class="terminal-container">
     <div class="terminal" id="terminal"></div>
     <div class="buttons">
-      <button onclick="copyPassphrase()">Copy</button>
-      <button onclick="restart()">New Passphrase</button>
+      <button onclick="copyPassphrase()">✓ >> ?</button>
+      <button onclick="restart()">!?</button>
     </div>
     <div id="copied"></div>
   </div>
@@ -104,7 +104,7 @@
     let passphrase = '';
 
     const introLines = [
-      '<span class="instructions">Generating new passphrase...</span>',
+      '<span class="instructions">Error: G3n3r@t!ng n3w p@ssphr@s3...</span>',
       '',
     ];
 
@@ -174,7 +174,7 @@
     window.copyPassphrase = function () {
       if (!passphrase) return;
       navigator.clipboard.writeText(passphrase).then(() => {
-        copiedMsg.textContent = '✓ Copied to clipboard!';
+        copiedMsg.textContent = '✓ >> !';
         setTimeout(() => copiedMsg.textContent = '', 2000);
       });
     }
