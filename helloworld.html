@@ -1,4 +1,4 @@
-<!-- ridiculous-hello-world.html: Terminal Matrix Anagram Password Generator -->
+<!-- ridiculous-hello-world.html: Terminal Matrix Anagram Password Generator with Enhanced Glitch and Terminal Styling -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,6 +36,10 @@
     .password {
       font-size: 2em;
       margin-top: 20px;
+      color: #39ff14;
+    }
+    .password.glitch {
+      animation: glitch 1s infinite;
     }
     button {
       margin-top: 40px;
@@ -49,14 +53,34 @@
     button:hover {
       background: #003300;
     }
+    #log {
+      text-align: left;
+      width: 100%;
+      max-width: 600px;
+      margin-top: 20px;
+      font-size: 14px;
+      color: #00e5ee;
+    }
+    .glitch {
+      animation: glitch 1s infinite;
+    }
+    @keyframes glitch {
+      0% { text-shadow: 2px 0 red, -2px 0 blue; }
+      20% { text-shadow: -2px 0 red, 2px 0 blue; }
+      40% { text-shadow: 2px 2px red, -2px -2px blue; }
+      60% { text-shadow: -2px -2px red, 2px 2px blue; }
+      80% { text-shadow: 2px -2px red, -2px 2px blue; }
+      100% { text-shadow: 0 0 red, 0 0 blue; }
+    }
   </style>
 </head>
 <body>
   <canvas id="matrix"></canvas>
   <div id="terminal">
-    <h1>Random Password Generator</h1>
-    <div class="password" id="password"></div>
+    <h1 class="glitch">Random Password Generator</h1>
+    <div class="password glitch" id="password"></div>
     <button onclick="generatePassword()">Generate Password</button>
+    <div id="log"></div>
   </div>
   <script>
     const phrase = 'HELLOWORLD';
@@ -80,12 +104,35 @@
     }
 
     function generatePassword() {
-      const anagram = shuffleString(phrase);
-      const suffix = randomSuffix();
-      document.getElementById('password').textContent = `${anagram}-${suffix}`;
+      const fakeCommands = [
+        'Initializing entropy pool...',
+        'Connecting to /dev/random...',
+        'Seeding RNG...',
+        'Encrypting phrase matrix...',
+        'Scrambling vector hash...',
+        'Finalizing token stream...'
+      ];
+
+      const log = document.getElementById('log');
+      log.innerHTML = '';
+      let index = 0;
+
+      const commandInterval = setInterval(() => {
+        const p = document.createElement('p');
+        p.textContent = '$ ' + fakeCommands[index];
+        log.appendChild(p);
+        log.scrollTop = log.scrollHeight;
+        index++;
+
+        if (index >= fakeCommands.length) {
+          clearInterval(commandInterval);
+          const anagram = shuffleString(phrase);
+          const suffix = randomSuffix();
+          document.getElementById('password').textContent = `${anagram}-${suffix}`;
+        }
+      }, 500);
     }
 
-    // Matrix effect with "HELLOWORLD" characters
     const canvas = document.getElementById("matrix");
     const ctx = canvas.getContext("2d");
     canvas.width = window.innerWidth;
@@ -111,7 +158,6 @@
     }
     setInterval(draw, 50);
 
-    // Initial password
     generatePassword();
   </script>
 </body>
